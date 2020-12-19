@@ -1,44 +1,44 @@
 const colorCodes = [
     {
         value: 2,
-        color: "blue",
-        backgroundColor: "red"
+        color: "#bcac9f",
+        backgroundColor: "#eee4da"
 
     },
     {
         value: 4,
-        color: "blue",
-        backgroundColor: "red"
+        color: "#bcac9f",
+        backgroundColor: "#efe1c9"
 
     },
     {
         value: 8,
-        color: "blue",
-        backgroundColor: "red"
+        color: "#f8f6f1",
+        backgroundColor: "#f3b379"
 
     },
     {
         value: 16,
-        color: "blue",
-        backgroundColor: "red"
+        color: "#f8f6f1",
+        backgroundColor: "#f69663"
 
     },
     {
         value: 32,
-        color: "blue",
-        backgroundColor: "red"
+        color: "#f8f6f1",
+        backgroundColor: "#f67d5f"
 
     },
     {
         value: 64,
-        color: "blue",
-        backgroundColor: "red"
+        color: "#f8f6f1",
+        backgroundColor: "#f75f3b"
 
     },
     {
         value: 128,
-        color: "blue",
-        backgroundColor: "red"
+        color: "#f8f6f1",
+        backgroundColor: "#eccf72"
 
     },
     {
@@ -48,7 +48,7 @@ const colorCodes = [
 
     },
     {
-        value: 256,
+        value: 512,
         color: "blue",
         backgroundColor: "red"
 
@@ -68,4 +68,27 @@ const colorCodes = [
 
 ];
 
-console.log(colorCodes);
+let mobileDevice = $(window).width() < 991;
+let ipad = ($(window).width() < 800 && $(window).width() > 400);
+let desktopDevice = $(window).width() > 992;
+let ipad1 = ($(window).width() == 1024);
+let ipad2 = ($(window).width() == 768);
+let mac = ($(window).width() > 1600);
+let url = "";
+$(function () {
+    mainApp = {
+        _isMobile: "",
+        init: function () {
+            this.test();
+        },
+        test: function () {
+            console.log(colorCodes);
+        }
+
+
+
+
+    };
+    mainApp.init()
+});
+
