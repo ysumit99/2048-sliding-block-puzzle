@@ -1,8 +1,6 @@
 #mainContainer {
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
-  top: 25%;
-  position: absolute;
 }
 #mainContainer .board {
   background-color: #faf8ef;
@@ -10,10 +8,12 @@
   grid-template-columns: auto auto auto auto;
   position: absolute;
   left: 50%;
-  top: 10%;
-  transform: translate(-50%, 0%);
+  top: 50%;
+  transform: translate(-50%, -50%);
   border: 3px solid #bcac9f;
   border-radius: 5px;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 #mainContainer .board .grid-item {
   border: 3px solid #bcac9f;
@@ -25,6 +25,7 @@
   justify-content: center;
   align-items: center;
   color: #776e65;
+  background-color: rgba(238, 228, 218, 0.35);
 }
 
 /*# sourceMappingURL=/css.81192ade.css.map */

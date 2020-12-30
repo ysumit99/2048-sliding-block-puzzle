@@ -117,8 +117,27 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/index.js":[function(require,module,exports) {
+})({"js/helper.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.randomCellGenerator = exports.deviceType = exports.colorCodes = void 0;
+
+var deviceType = function deviceType() {
+  var viewportWidth = window.innerWidth;
+  var device = "";
+  if (viewportWidth < 768) device = "mobile";else if (viewportWidth == 768) device = "ipad";else if (viewportWidth >= 992) device = "desktop";else if (viewportWidth > 1600) device = "largeDesktop";
+  return device;
+};
+
+exports.deviceType = deviceType;
 var colorCodes = [{
+  value: 0,
+  color: "",
+  backgroundColor: "rgba(238, 228, 218, 0.35)"
+}, {
   value: 2,
   color: "#bcac9f",
   backgroundColor: "#eee4da"
@@ -163,26 +182,48 @@ var colorCodes = [{
   color: "blue",
   backgroundColor: "red"
 }];
-var mobileDevice = $(window).width() < 991;
-var ipad = $(window).width() < 800 && $(window).width() > 400;
-var desktopDevice = $(window).width() > 992;
-var ipad1 = $(window).width() == 1024;
-var ipad2 = $(window).width() == 768;
-var mac = $(window).width() > 1600;
-var url = "";
+exports.colorCodes = colorCodes;
 
-(function () {
-  mainApp = {
-    init: function init() {
-      this.test();
-    },
-    test: function test() {
-      console.log(colorCodes);
+var randomCellGenerator = function randomCellGenerator() {
+  var min = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+  var max = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 16;
+  return Math.floor(Math.random() * max) + min;
+};
+
+exports.randomCellGenerator = randomCellGenerator;
+},{}],"js/index.js":[function(require,module,exports) {
+"use strict";
+
+var _helper = require("./helper");
+
+window.onload = function () {
+  console.log('page loaded');
+  console.log(_helper.colorCodes, (0, _helper.deviceType)()); //select first 2 tiles randomly
+
+  var firstTile = (0, _helper.randomCellGenerator)();
+  var secondTile = (0, _helper.randomCellGenerator)(); //console.log(firstTile, secondTile);
+
+  if (secondTile === firstTile) {
+    while (secondTile === firstTile) {
+      secondTile = (0, _helper.randomCellGenerator)();
     }
-  };
-  mainApp.init();
-})();
-},{}],"../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+  }
+
+  console.log(firstTile, secondTile);
+
+  var initialBlock = _helper.colorCodes.find(function (number) {
+    return number.value === 2;
+  });
+
+  var tileOne = document.querySelector("#cell-".concat(firstTile));
+  var tileTwo = document.querySelector("#cell-".concat(secondTile));
+  tileOne.innerHTML = initialBlock.value;
+  tileTwo.innerHTML = initialBlock.value;
+  tileOne.style.cssText = "color:".concat(initialBlock.color, ";background-color:").concat(initialBlock.backgroundColor);
+  tileTwo.style.cssText = "color:".concat(initialBlock.color, ";background-color:").concat(initialBlock.backgroundColor);
+  console.log(initialBlock);
+};
+},{"./helper":"js/helper.js"}],"../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -210,7 +251,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56640" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63260" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
