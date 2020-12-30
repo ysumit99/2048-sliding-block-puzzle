@@ -75,9 +75,9 @@ let ipad1 = ($(window).width() == 1024);
 let ipad2 = ($(window).width() == 768);
 let mac = ($(window).width() > 1600);
 let url = "";
-$(function () {
+(function () {
     mainApp = {
-        _isMobile: "",
+
         init: function () {
             this.test();
         },
@@ -90,5 +90,5 @@ $(function () {
 
     };
     mainApp.init()
-});
+}());
 

@@ -1,7 +1,8 @@
 #mainContainer {
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
-  height: 100vh;
+  top: 25%;
+  position: absolute;
   .board {
     background-color: #faf8ef;
     display: grid;

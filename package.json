@@ -1,0 +1,16 @@
+{
+  "name": "2048-game-javascript",
+  "version": "1.0.0",
+  "description": "2048 sliding block puzzle in JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "author": "Sumit Yadav",
+  "license": "MIT",
+  "devDependencies": {
+    "cssnano": "^4.1.10",
+    "sass": "^1.32.0"
+  }
+}
